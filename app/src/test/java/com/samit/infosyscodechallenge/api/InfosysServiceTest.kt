@@ -54,8 +54,18 @@ class InfosysServiceTest {
         runBlocking {
             enqueueResponse("facts.json")
             val resultResponse = service.getFacts().body()
-            val legoSets = resultResponse!!.results
-            Assert.assertThat(legoSets.size, CoreMatchers.`is`(13))
+            val facts = resultResponse!!.results
+            Assert.assertThat(facts.size, CoreMatchers.`is`(13))
+        }
+    }
+
+    @Test
+    fun getResponseTitle() {
+        runBlocking {
+            enqueueResponse("facts.json")
+            val resultResponse = service.getFacts().body()
+            val title = resultResponse!!.title
+            Assert.assertThat("About Canada", CoreMatchers.`is`(title))
         }
     }
 

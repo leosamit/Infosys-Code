@@ -51,4 +51,13 @@ class FactsRepositoryTest {
             Mockito.verifyZeroInteractions(dao)
         }
     }
+
+    @Test
+    fun loadFactsCache() {
+        runBlocking {
+            repository.getFactsCache()
+            Mockito.verify(dao, Mockito.never()).getFacts()
+            Mockito.verifyZeroInteractions(dao)
+        }
+    }
 }
