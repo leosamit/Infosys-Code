@@ -17,7 +17,6 @@ class InfosysApp : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
-
         if (BuildConfig.DEBUG) Stetho.initializeWithDefaults(this)
 
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())

@@ -16,5 +16,8 @@ interface FactDao {
     suspend fun insertFact(factDB: FactDB)
 
     @Query(SELECT_FACTS)
-    fun getFacts(): LiveData<List<FactDB>>
+    fun getFactsLivedata(): LiveData<List<FactDB>>
+
+    @Query(SELECT_FACTS)
+    suspend fun getFacts(): List<FactDB>
 }
