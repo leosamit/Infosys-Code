@@ -32,7 +32,11 @@ class FactsRepository @Inject constructor(
     val factsLiveData: LiveData<Result<List<FactUI>>> = _factsLivedata
     private val parentJob = Job()
     private val scope = CoroutineScope(dispatcherProvider.mainDispatcher + parentJob)
+    private val _titleResponse = MutableLiveData<String>()
+    val titleResponse: LiveData<String>
+        get() = _titleResponse
 
+    //Database acts as single source of truth. Data is always fetched from database after api call
     val singleSourceFacts = resultLiveData(
         databaseQuery = { dao.getFactsLivedata() },
         networkCall = { remoteSource.fetchFacts() },
@@ -42,12 +46,14 @@ class FactsRepository @Inject constructor(
             }.filter { !it.title.isNullOrEmpty() })
         })
 
+    //Load from network and save in database
     fun getFactsNetworkPersist() {
         _factsLivedata.postLoading()
         scope.launch {
             val responseStatus = remoteSource.fetchFacts()
             when (responseStatus.status) {
                 Result.Status.SUCCESS -> {
+                    _titleResponse.postValue(responseStatus.data!!.title.toString())
                     dao.insertAllFacts(responseStatus.data!!.results.map {
                         toFactDB(it)
                     }.filter { !it.title.isNullOrEmpty() })
@@ -62,6 +68,7 @@ class FactsRepository @Inject constructor(
         }
     }
 
+    //Load data from Cache
     fun getFactsCache() {
         _factsLivedata.postLoading()
         scope.launch {
@@ -69,6 +76,7 @@ class FactsRepository @Inject constructor(
         }
     }
 
+    //Cancel Coroutine scope
     fun cancelAllRequests() {
         parentJob.cancelChildren()
     }

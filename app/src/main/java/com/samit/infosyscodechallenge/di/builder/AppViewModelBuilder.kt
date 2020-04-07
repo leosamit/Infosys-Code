@@ -1,7 +1,7 @@
-package com.example.coronavirus.di.builder
+package com.samit.infosyscodechallenge.di.builder
 
 import androidx.lifecycle.ViewModel
-import com.example.coronavirus.di.qualifier.ViewModelKey
+import com.samit.infosyscodechallenge.di.qualifier.ViewModelKey
 import com.samit.infosyscodechallenge.ui.FactsViewModel
 import dagger.Binds
 import dagger.Module

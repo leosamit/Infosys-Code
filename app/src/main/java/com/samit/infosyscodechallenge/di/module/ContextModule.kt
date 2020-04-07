@@ -1,8 +1,8 @@
-package com.example.coronavirus.di.module
+package com.samit.infosyscodechallenge.di.module
 
 import android.app.Application
 import android.content.Context
-import com.example.coronavirus.di.builder.ViewModelModule
+import com.samit.infosyscodechallenge.di.builder.ViewModelModule
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

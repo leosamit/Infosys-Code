@@ -1,4 +1,4 @@
-package com.example.coronavirus.di.qualifier
+package com.samit.infosyscodechallenge.di.qualifier
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

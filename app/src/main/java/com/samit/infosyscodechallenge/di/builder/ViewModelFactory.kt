@@ -1,4 +1,4 @@
-package com.example.coronavirus.di.builder
+package com.samit.infosyscodechallenge.di.builder
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

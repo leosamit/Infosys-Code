@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.coronavirus.di.injectViewModel
+import com.samit.infosyscodechallenge.di.injectViewModel
+import com.samit.infosyscodechallenge.MainActivity
 import com.samit.infosyscodechallenge.R
 import com.samit.infosyscodechallenge.data.Result
 import com.samit.infosyscodechallenge.databinding.FragmentFactsBinding
@@ -15,6 +16,7 @@ import com.samit.infosyscodechallenge.util.ConnectivityUtil
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_facts.*
 import javax.inject.Inject
+
 
 class FactsFragment : DaggerFragment() {
     @Inject
@@ -49,6 +51,12 @@ class FactsFragment : DaggerFragment() {
             viewModel.fetchNetworkCache()
         }
         viewModel.fetchNetworkCache()
+
+        viewModel.titleResponse.observe(this, Observer {
+            (activity as MainActivity?)
+                ?.supportActionBar?.title = it
+        })
+
         viewModel.factsList.observe(this@FactsFragment, Observer { result ->
             when (result.status) {
                 Result.Status.LOADING -> {

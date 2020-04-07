@@ -3,7 +3,6 @@ package com.samit.infosyscodechallenge.api
 import retrofit2.Response
 import retrofit2.http.GET
 
-
 interface InfosysService {
 
     companion object {
@@ -12,6 +11,4 @@ interface InfosysService {
 
     @GET("facts.json")
     suspend fun getFacts(): Response<ResultsResponse<FactApi>>
-
-
 }

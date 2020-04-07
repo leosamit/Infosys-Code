@@ -1,4 +1,4 @@
-package com.example.coronavirus.di.builder
+package com.samit.infosyscodechallenge.di.builder
 
 import com.samit.infosyscodechallenge.MainActivity
 import dagger.Module
@@ -9,5 +9,4 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = [MainActivityProviders::class])
     abstract fun bindMainActivity(): MainActivity
-
 }

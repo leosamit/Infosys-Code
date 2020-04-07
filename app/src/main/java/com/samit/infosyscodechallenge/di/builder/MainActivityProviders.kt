@@ -1,4 +1,4 @@
-package com.example.coronavirus.di.builder
+package com.samit.infosyscodechallenge.di.builder
 
 import com.samit.infosyscodechallenge.ui.FactsFragment
 import dagger.Module

@@ -9,9 +9,9 @@ class FactsViewModel @Inject constructor(private val repository: FactsRepository
 
     //For Single Source of Truth
     val factsSingleSource = repository.singleSourceFacts
-
     var connectivityAvailable: Boolean = false
     var factsList = repository.factsLiveData
+    var titleResponse = repository.titleResponse
 
     fun fetchNetworkCache() {
         if (connectivityAvailable) {

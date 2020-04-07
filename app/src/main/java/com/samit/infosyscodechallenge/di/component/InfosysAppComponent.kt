@@ -1,10 +1,10 @@
-package com.example.coronavirus.di.component
+package com.samit.infosyscodechallenge.di.component
 
 import android.app.Application
-import com.example.coronavirus.di.builder.ActivityBuilder
-import com.example.coronavirus.di.module.AppModule
-import com.example.coronavirus.di.module.ContextModule
-import com.example.coronavirus.di.module.NetworkModule
+import com.samit.infosyscodechallenge.di.builder.ActivityBuilder
+import com.samit.infosyscodechallenge.di.module.AppModule
+import com.samit.infosyscodechallenge.di.module.ContextModule
+import com.samit.infosyscodechallenge.di.module.NetworkModule
 import com.samit.infosyscodechallenge.InfosysApp
 import com.samit.infosyscodechallenge.di.module.DbModule
 import dagger.BindsInstance

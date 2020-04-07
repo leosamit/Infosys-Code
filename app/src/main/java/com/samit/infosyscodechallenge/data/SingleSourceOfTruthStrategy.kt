@@ -4,18 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import kotlinx.coroutines.Dispatchers
-import timber.log.Timber
 
-
+//Database acts as single source of truth. Data is always fetched from database after api call
 fun <T, A> resultLiveData(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Result<A>,
     saveCallResult: suspend (A) -> Unit
 ): LiveData<Result<T>> =
     liveData(Dispatchers.IO) {
-
         emit(Result.loading<T>())
-        Timber.d("Infosys Api Called in SIngle Source of Truth")
         val source = databaseQuery.invoke().map { Result.success(it) }
         emitSource(source)
 

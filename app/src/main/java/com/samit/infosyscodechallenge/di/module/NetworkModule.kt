@@ -1,4 +1,4 @@
-package com.example.coronavirus.di.module
+package com.samit.infosyscodechallenge.di.module
 
 
 import com.facebook.stetho.okhttp3.StethoInterceptor

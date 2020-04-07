@@ -9,6 +9,7 @@
         Class aptent taciti sociosqu ad litora torquent per conubia
         nostra, per inceptos himenaeos. Aliquam porta blandit ante, vel placerat ante euismod at
     </string>
-
-    <string name="smalll_text">Small Text</string>
+    <string name="small_text">Small Text</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
 </resources>

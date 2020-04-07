@@ -11,7 +11,6 @@ abstract class BaseDataSource {
 
     protected suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
         try {
-            Timber.d("Infosys APi Called in BaseDataSource")
             val response = call()
             if (response.isSuccessful) {
                 val body = response.body()
@@ -27,6 +26,5 @@ abstract class BaseDataSource {
         Timber.e(message)
         return Result.error("$message")
     }
-
 }
 
