@@ -3,7 +3,9 @@ package com.samit.infosyscodechallenge.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
+import com.samit.infosyscodechallenge.data.mapper.toFactUI
 import kotlinx.coroutines.Dispatchers
+import timber.log.Timber
 
 //Database acts as single source of truth. Data is always fetched from database after api call
 fun <T, A> resultLiveData(
@@ -12,6 +14,7 @@ fun <T, A> resultLiveData(
     saveCallResult: suspend (A) -> Unit
 ): LiveData<Result<T>> =
     liveData(Dispatchers.IO) {
+        Timber.d("Single SOurce Called")
         emit(Result.loading<T>())
         val source = databaseQuery.invoke().map { Result.success(it) }
         emitSource(source)

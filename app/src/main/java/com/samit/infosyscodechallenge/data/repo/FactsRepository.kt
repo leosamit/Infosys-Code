@@ -57,7 +57,6 @@ class FactsRepository @Inject constructor(
                     dao.insertAllFacts(responseStatus.data!!.results.map {
                         toFactDB(it)
                     }.filter { !it.title.isNullOrEmpty() })
-
                     _factsLivedata.postSuccess(responseStatus.data!!.results.map { toFactUI(it) }
                         .filter { !it.title.isNullOrEmpty() })
                 }
@@ -76,9 +75,17 @@ class FactsRepository @Inject constructor(
         }
     }
 
+    fun observeFactsList(connectionAvailable: Boolean): LiveData<Result<List<FactUI>>> {
+        if (connectionAvailable) {
+            getFactsNetworkPersist()
+        } else {
+            getFactsCache()
+        }
+        return _factsLivedata
+    }
+
     //Cancel Coroutine scope
     fun cancelAllRequests() {
         parentJob.cancelChildren()
     }
-
 }

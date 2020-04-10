@@ -31,14 +31,12 @@ class FactsViewModelTest {
     @Test
     fun fetchFromNetworkWhenConnectionAvailable() {
         viewModel.connectivityAvailable = false
-        viewModel.fetchNetworkCache()
-        Mockito.verify(repository, Mockito.never()).getFactsNetworkPersist()
+        Mockito.verify(repository, Mockito.never()).observeFactsList(false)
     }
 
     @Test
     fun fetchFromNetworkWhenConnectionNotAvailable() {
         viewModel.connectivityAvailable = true
-        viewModel.fetchNetworkCache()
-        Mockito.verify(repository, Mockito.never()).getFactsCache()
+        Mockito.verify(repository, Mockito.never()).observeFactsList(true)
     }
 }

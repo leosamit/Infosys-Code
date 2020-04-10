@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.samit.infosyscodechallenge.di.injectViewModel
 import com.samit.infosyscodechallenge.MainActivity
 import com.samit.infosyscodechallenge.R
 import com.samit.infosyscodechallenge.data.Result
 import com.samit.infosyscodechallenge.databinding.FragmentFactsBinding
+import com.samit.infosyscodechallenge.di.injectViewModel
 import com.samit.infosyscodechallenge.util.ConnectivityUtil
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_facts.*
@@ -48,10 +48,12 @@ class FactsFragment : DaggerFragment() {
 
         binding.srlFacts.setOnRefreshListener {
             viewModel.connectivityAvailable = ConnectivityUtil.isConnected(context!!)
-            viewModel.fetchNetworkCache()
+            viewModel.refreshFactsList()
         }
-        viewModel.fetchNetworkCache()
+        subscribeUI()
+    }
 
+    private fun subscribeUI() {
         viewModel.titleResponse.observe(this, Observer {
             (activity as MainActivity?)
                 ?.supportActionBar?.title = it

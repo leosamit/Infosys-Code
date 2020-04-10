@@ -8,17 +8,20 @@ class FactsViewModel @Inject constructor(private val repository: FactsRepository
     ViewModel() {
 
     //For Single Source of Truth
-    val factsSingleSource = repository.singleSourceFacts
+    //val factsSingleSource = repository.singleSourceFacts
     var connectivityAvailable: Boolean = false
-    var factsList = repository.factsLiveData
     var titleResponse = repository.titleResponse
 
-    fun fetchNetworkCache() {
-        if (connectivityAvailable) {
-            repository.getFactsNetworkPersist()
-        } else {
-            repository.getFactsCache()
-        }
+    val factsList by lazy {
+        repository.observeFactsList(
+            connectivityAvailable
+        )
+    }
+
+    fun refreshFactsList() {
+        repository.observeFactsList(
+            connectivityAvailable
+        )
     }
 
     override fun onCleared() {
