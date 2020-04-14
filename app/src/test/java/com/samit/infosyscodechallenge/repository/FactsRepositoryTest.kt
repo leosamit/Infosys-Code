@@ -7,7 +7,6 @@ import com.samit.infosyscodechallenge.data.db.FactDao
 import com.samit.infosyscodechallenge.data.repo.FactsRepository
 import com.samit.infosyscodechallenge.data.source.FactRemoteDataSource
 import com.samit.infosyscodechallenge.util.CoroutineDispatcherProvider
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -33,7 +32,6 @@ class FactsRepositoryTest {
     @Rule
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     @Before
     fun init() {

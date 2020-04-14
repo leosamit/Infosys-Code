@@ -6,7 +6,6 @@ import javax.inject.Inject
 
 class FactRemoteDataSource @Inject constructor(private val service: InfosysService) :
     BaseDataSource() {
-
     suspend fun fetchFacts() =
         getResult {
             service.getFacts()

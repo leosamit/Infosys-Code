@@ -12,7 +12,6 @@ import com.samit.infosyscodechallenge.ui.model.FactUI
 class FactsAdapter : ListAdapter<FactUI, FactsAdapter.FactsViewHolder>(
     FactsDiffCallback()
 ) {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FactsViewHolder {
         return FactsViewHolder(
             ItemFactsBinding.inflate(
@@ -31,21 +30,11 @@ class FactsAdapter : ListAdapter<FactUI, FactsAdapter.FactsViewHolder>(
         RecyclerView.ViewHolder(binding.root) {
         fun bindData(facts: FactUI) {
             binding.facts = facts
-            //to-do delete this 'if'
-            if (facts.title.isNullOrEmpty() &&
-                facts.description.isNullOrEmpty() && facts.image.isNullOrEmpty()
-            ) {
-            }
+
             if (facts.image.isNullOrEmpty()) {
                 binding.ivFact.visibility = View.GONE
             } else {
                 binding.ivFact.visibility = View.VISIBLE
-            }
-            if (facts.title.isNullOrEmpty()) {
-                //binding.tvTitle.visibility = View.GONE
-            }
-            if (facts.description.isNullOrEmpty()) {
-                //binding.tvDesc.visibility = View.GONE
             }
         }
     }
@@ -59,5 +48,4 @@ class FactsDiffCallback : DiffUtil.ItemCallback<FactUI>() {
     override fun areContentsTheSame(oldItem: FactUI, newItem: FactUI): Boolean {
         return oldItem == newItem
     }
-
 }

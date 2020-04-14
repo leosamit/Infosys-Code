@@ -39,18 +39,17 @@ class InfosysServiceTest {
     }
 
     @Test
-    fun requestLegoSets() {
+    fun requestFacts() {
         runBlocking {
             enqueueResponse("facts.json")
             val resultResponse = service.getFacts().body()
-
             val request = mockWebServer.takeRequest()
             Assert.assertNotNull(resultResponse)
         }
     }
 
     @Test
-    fun getFactssResponse() {
+    fun getFactsResponse() {
         runBlocking {
             enqueueResponse("facts.json")
             val resultResponse = service.getFacts().body()

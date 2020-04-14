@@ -1,15 +1,8 @@
 <resources>
     <string name="app_name">Infosys Code Challenge</string>
-    <string name="long_text">
-        orem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis ultricies metus,
-        in laoreet lacus bibendum sed. Nunc vehicula erat vitae ipsum semper tristique. Aenean tincidunt
-        libero et urna ultrices, non suscipit velit maximus. Morbi viverra lorem dui, in euismod sapien
-        dignissim eget. Fusce condimentum et dolor vitae vulputate. Nunc condimentum velit eget orci semper,
-        id consectetur turpis eleifend. Nullam nulla elit, porttitor sed ultrices facilisis, rhoncus in nibh.
-        Class aptent taciti sociosqu ad litora torquent per conubia
-        nostra, per inceptos himenaeos. Aliquam porta blandit ante, vel placerat ante euismod at
-    </string>
     <string name="small_text">Small Text</string>
-    <string name="description">Description</string>
     <string name="title">Title</string>
+    <string name="list_empty_message">No internet network! Please enable network to see the facts list</string>
+    <string name="retry">Retry</string>
+    <string name="facts_fragment">factsFragment</string>
 </resources>

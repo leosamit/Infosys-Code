@@ -3,6 +3,7 @@ package com.samit.infosyscodechallenge.di.module
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
+import com.samit.infosyscodechallenge.api.ApiKeys.Companion.ENDPOINT
 import com.samit.infosyscodechallenge.api.InfosysService
 import com.samit.infosyscodechallenge.data.source.FactRemoteDataSource
 import dagger.Module
@@ -23,7 +24,7 @@ class NetworkModule {
         gsonConverterFactory: GsonConverterFactory,
         okHttpClient: OkHttpClient
     ): Retrofit {
-        return Retrofit.Builder().baseUrl(InfosysService.ENDPOINT)
+        return Retrofit.Builder().baseUrl(ENDPOINT)
             .addConverterFactory(gsonConverterFactory)
             .client(okHttpClient)
             .build()

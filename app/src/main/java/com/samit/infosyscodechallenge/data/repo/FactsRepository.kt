@@ -6,7 +6,6 @@ import com.samit.infosyscodechallenge.data.Result
 import com.samit.infosyscodechallenge.data.db.FactDao
 import com.samit.infosyscodechallenge.data.mapper.toFactDB
 import com.samit.infosyscodechallenge.data.mapper.toFactUI
-import com.samit.infosyscodechallenge.data.resultLiveData
 import com.samit.infosyscodechallenge.data.source.FactRemoteDataSource
 import com.samit.infosyscodechallenge.ui.model.FactUI
 import com.samit.infosyscodechallenge.util.CoroutineDispatcherProvider
@@ -29,22 +28,12 @@ class FactsRepository @Inject constructor(
 ) {
     private val _factsLivedata: MutableLiveData<Result<List<FactUI>>> =
         MutableLiveData()
-    val factsLiveData: LiveData<Result<List<FactUI>>> = _factsLivedata
     private val parentJob = Job()
     private val scope = CoroutineScope(dispatcherProvider.mainDispatcher + parentJob)
     private val _titleResponse = MutableLiveData<String>()
     val titleResponse: LiveData<String>
         get() = _titleResponse
 
-    //Database acts as single source of truth. Data is always fetched from database after api call
-    val singleSourceFacts = resultLiveData(
-        databaseQuery = { dao.getFactsLivedata() },
-        networkCall = { remoteSource.fetchFacts() },
-        saveCallResult = { result ->
-            dao.insertAllFacts(result.results.map {
-                toFactDB(it)
-            }.filter { !it.title.isNullOrEmpty() })
-        })
 
     //Load from network and save in database
     fun getFactsNetworkPersist() {
@@ -54,10 +43,10 @@ class FactsRepository @Inject constructor(
             when (responseStatus.status) {
                 Result.Status.SUCCESS -> {
                     _titleResponse.postValue(responseStatus.data!!.title.toString())
-                    dao.insertAllFacts(responseStatus.data!!.results.map {
+                    dao.insertAllFacts(responseStatus.data.results.map {
                         toFactDB(it)
                     }.filter { !it.title.isNullOrEmpty() })
-                    _factsLivedata.postSuccess(responseStatus.data!!.results.map { toFactUI(it) }
+                    _factsLivedata.postSuccess(responseStatus.data.results.map { toFactUI(it) }
                         .filter { !it.title.isNullOrEmpty() })
                 }
                 Result.Status.ERROR -> {

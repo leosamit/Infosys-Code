@@ -2,7 +2,6 @@ package com.samit.infosyscodechallenge.api
 
 import com.samit.infosyscodechallenge.data.Result
 import retrofit2.Response
-import timber.log.Timber
 
 /**
  * Abstract Base Data source class with error handling
@@ -23,8 +22,7 @@ abstract class BaseDataSource {
     }
 
     private fun <T> error(message: String): Result<T> {
-        Timber.e(message)
-        return Result.error("$message")
+        return Result.error(message)
     }
 }
 

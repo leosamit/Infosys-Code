@@ -20,5 +20,7 @@ interface ApiKeys {
         const val ROWS = "rows"
         const val DESCRIPTION = "description"
         const val IMAGE = "imageHref"
+        const val API_GET_FACTS = "facts.json"
+        const val ENDPOINT = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/"
     }
 }

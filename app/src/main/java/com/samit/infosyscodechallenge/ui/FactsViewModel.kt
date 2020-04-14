@@ -7,8 +7,6 @@ import javax.inject.Inject
 class FactsViewModel @Inject constructor(private val repository: FactsRepository) :
     ViewModel() {
 
-    //For Single Source of Truth
-    //val factsSingleSource = repository.singleSourceFacts
     var connectivityAvailable: Boolean = false
     var titleResponse = repository.titleResponse
 

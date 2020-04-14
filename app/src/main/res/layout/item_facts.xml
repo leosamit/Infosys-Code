@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="facts"
             type="com.samit.infosyscodechallenge.ui.model.FactUI" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contraint_container"
+        android:id="@+id/constraint_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/item_constraint_margin">
@@ -53,7 +52,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/iv_fact"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
-                    tools:text="@string/long_text" />
+                    tools:text="@string/small_text" />
 
                 <ImageView
                     android:id="@+id/iv_fact"
@@ -64,7 +63,9 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
                     app:setImage="@{facts.image}"
-                    tools:background="@drawable/placeholder" />
+                    tools:background="@drawable/placeholder"
+                    android:layout_marginStart="@dimen/item_constraint_margin"
+                    tools:ignore="ContentDescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

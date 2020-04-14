@@ -5,8 +5,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.samit.infosyscodechallenge.data.db.FactDao
 import com.samit.infosyscodechallenge.utils.testFactSetA
 import com.samit.infosyscodechallenge.utils.testFactSetB
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers
 import org.junit.Assert
@@ -20,7 +18,6 @@ class FactDaoTest : DbTest() {
     private lateinit var factsDao: FactDao
     private val setA = testFactSetA.copy()
     private val setB = testFactSetB.copy()
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()

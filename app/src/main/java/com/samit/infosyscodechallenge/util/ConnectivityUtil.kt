@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.samit.infosyscodechallenge.util
 
 import android.content.Context
