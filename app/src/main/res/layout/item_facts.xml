@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="facts"
             type="com.samit.infosyscodechallenge.ui.model.FactUI" />
@@ -11,29 +12,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/MatchWrapParentStyle"
         android:layout_margin="@dimen/item_constraint_margin">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/MatchWrapParentStyle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/MatchWrapParentStyle"
                 android:layout_margin="@dimen/card_view_margin">
 
                 <TextView
                     android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/WrapContentStyle.TextStyle.Big"
                     android:text="@{facts.title}"
-                    android:textColor="@color/textColor"
-                    android:textSize="@dimen/text_title"
                     app:layout_constraintBottom_toTopOf="@id/tv_desc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -41,12 +36,8 @@
 
                 <TextView
                     android:id="@+id/tv_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
+                    style="@style/WrapContentStyle.TextStyle.Normal"
                     android:text="@{facts.description}"
-                    android:textColor="@color/textColor"
-                    android:textSize="@dimen/text_desc"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -56,15 +47,12 @@
 
                 <ImageView
                     android:id="@+id/iv_fact"
-                    android:layout_width="100dp"
-                    android:layout_height="70dp"
-                    android:layout_marginLeft="@dimen/item_constraint_margin"
+                    style="@style/ImageStyle"
                     app:layout_constraintLeft_toRightOf="@+id/tv_desc"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title"
                     app:setImage="@{facts.image}"
                     tools:background="@drawable/placeholder"
-                    android:layout_marginStart="@dimen/item_constraint_margin"
                     tools:ignore="ContentDescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
